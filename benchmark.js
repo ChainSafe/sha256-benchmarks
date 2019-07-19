@@ -24,7 +24,10 @@ suite
     hash.finish();
   })
   .add('Sha256BCrypto#hash', function () {
-    Sha256BCrypto.hash(message)
+    const hash = new Sha256BCrypto();
+    hash.init();
+    hash.update(message);
+    hash.final();
   })
   // add listeners
   .on('cycle', function (event) {
