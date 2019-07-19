@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@chainsafe/sha256-rust-wasm/-/sha256-rust-wasm-1.0.0.tgz#6263e2c63389900f7e4bcc8f4c7759c123c58b09"
   integrity sha512-D7eAP/zjNdhXCRw3gxdYwqVUlwtxXx4pp3f2c32hYW/jzpKzQBi0xSVDskeBm5DNZHnqDy8uG9FZKN8c9h8yKQ==
 
+asmcrypto.js@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/asmcrypto.js/-/asmcrypto.js-2.3.2.tgz#b9f84bd0a1fb82f21f8c29cc284a707ad17bba2e"
+  integrity sha512-3FgFARf7RupsZETQ1nHnhLUUvpcttcCq1iZCaVAbJZbCZ5VNRrNyvpDyHTOb0KC3llFcsyOT/a99NZcCbeiEsA==
+
 benchmark@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/benchmark/-/benchmark-2.1.4.tgz#09f3de31c916425d498cc2ee565a0ebf3c2a5629"

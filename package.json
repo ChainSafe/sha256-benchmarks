@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@chainsafe/sha256-rust-wasm": "^1.0.0",
+    "asmcrypto.js": "^2.3.2",
     "benchmark": "^2.1.4",
     "js-sha256": "^0.9.0"
   }

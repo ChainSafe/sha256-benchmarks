@@ -1,6 +1,7 @@
 const Benchmark = require('benchmark');
 const Sha256Rust = require('@chainsafe/sha256-rust-wasm');
 const Sha256Js = require('js-sha256');
+const Sha256Asm = require('asmcrypto.js');
 
 var suite = new Benchmark.Suite;
 
@@ -15,6 +16,11 @@ suite
     var hash = Sha256Js.sha256.create();
     hash.update(message);
     hash.digest();
+  })
+  .add('Sha256Asm#hash', function () {
+    var hash = new Sha256Asm.Sha256();
+    hash.process(message);
+    hash.finish();
   })
   // add listeners
   .on('cycle', function (event) {
