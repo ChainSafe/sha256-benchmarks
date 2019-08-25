@@ -3,10 +3,15 @@ const Sha256Rust = require('@chainsafe/sha256-rust-wasm');
 const Sha256Js = require('js-sha256');
 const Sha256Asm = require('asmcrypto.js');
 const Sha256BCrypto = require('bcrypto/lib/sha256');
+const Sha256AS = require('./sha256-as');
 
 var suite = new Benchmark.Suite;
 
-const message = new Uint8Array(Buffer.from('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'));
+
+const message = new Uint8Array(Buffer.from('11111111112222222222333333333344444444445555555555666666666677777'));
+const wasmArray = Sha256AS.__retain(Sha256AS.__allocArray(Sha256AS.UINT8ARRAY_ID, message));
+
+// const message = new Uint8Array(Buffer.from('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'));
 
 // add tests
 suite
@@ -29,6 +34,9 @@ suite
     hash.update(message);
     hash.final();
   })
+  .add('Sha256AS#hash', function (){
+      Sha256AS.hashMe(wasmArray);
+     })
   // add listeners
   .on('cycle', function (event) {
     console.log(String(event.target));
