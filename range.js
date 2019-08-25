@@ -1,14 +1,14 @@
 const Benchmark = require('benchmark');
 const Sha256Rust = require('@chainsafe/sha256-rust-wasm');
 const Sha256Js = require('js-sha256');
-const Sha256Asm = require('asmcrypto.js');
+// const Sha256Asm = require('asmcrypto.js');
 const Sha256BCrypto = require('bcrypto/lib/sha256');
 const Sha256AS = require('./sha256-as');
 
 const messages = []
 const wasmMessages = []
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 256; i++) {
     if (i > 0) {
         const message = "1".repeat(i)
         messages.push(new Uint8Array(Buffer.from(message)));
@@ -29,11 +29,11 @@ for (let i = 0; i < messages.length; i++) {
             hash.update(messages[i]);
             hash.digest();
         })
-        .add(`LENGTH ${messages[i].length} Sha256Asm#hash`, function () {
-            var hash = new Sha256Asm.Sha256();
-            hash.process(messages[i]);
-            hash.finish();
-        })
+        // .add(`LENGTH ${messages[i].length} Sha256Asm#hash`, function () {
+        //     var hash = new Sha256Asm.Sha256();
+        //     hash.process(messages[i]);
+        //     hash.finish();
+        // })
         .add(`LENGTH ${messages[i].length} Sha256BCrypto#hash`, function () {
             const hash = new Sha256BCrypto();
             hash.init();

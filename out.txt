@@ -1,0 +1,3 @@
+Test values 
+	String: 49 
+	Wasm: 1152
